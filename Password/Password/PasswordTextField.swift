@@ -47,15 +47,17 @@ class PasswordTextField: UIView {
     
     override var intrinsicContentSize: CGSize {
 //        return CGSize(width: 200, height: 200)
-        return CGSize(width: 200, height: 50)
+//        return CGSize(width: 200, height: 50)
+        return CGSize(width: 200, height: 60)
     }
     
 }
 
-extension PasswordTextField {
+
+extension PasswordTextField  {
     func style() {
         translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = .yellow
+//        backgroundColor = .yellow
         lockImageView.translatesAutoresizingMaskIntoConstraints = false
         
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -65,6 +67,8 @@ extension PasswordTextField {
         textField.keyboardType = .asciiCapable // preventing what the user can enter, eg emojies
         textField.attributedPlaceholder = NSAttributedString(string:placeHolderText,
                                                              attributes: [NSAttributedString.Key.foregroundColor: UIColor.secondaryLabel]) // text color of placeholder
+        
+        
         
         eyeButton.translatesAutoresizingMaskIntoConstraints = false
         eyeButton.setImage(UIImage(systemName: "eye.circle"), for: .normal)
@@ -77,8 +81,23 @@ extension PasswordTextField {
         errorLabel.translatesAutoresizingMaskIntoConstraints = false
         errorLabel.textColor = .systemRed
         errorLabel.font = .preferredFont(forTextStyle: .footnote)
-        errorLabel.text = "Enter your password"
+//        errorLabel.text = "Enter your password"
+//        errorLabel.text = "Enter your password and again and again and again and again and again"
+        errorLabel.text = "Your password must meet the requirements below" // requirements below will go down to a new line so there are no orphan words
         errorLabel.isHidden = false // true
+        
+//        We can specify a minimum amount we'd like the font to reduce by setting a minimumScaleFactor of 80%. Meaning the font will reduce its in size 80% but no more.
+//        errorLabel.adjustsFontSizeToFitWidth = true
+//        errorLabel.minimumScaleFactor = 0.8
+        
+//        If we want the entire body of text into the allocated space regardless of size we can set the scale factor to 0.
+//        errorLabel.adjustsFontSizeToFitWidth = true
+//        errorLabel.minimumScaleFactor = 0.0
+        
+//        Going multiline
+//        We can make a label multiline like this:
+        errorLabel.numberOfLines = 0
+        errorLabel.lineBreakMode = .byWordWrapping // prevents orphan words by default
 
         
         
@@ -142,4 +161,6 @@ extension PasswordTextField {
         eyeButton.isSelected.toggle()
     }
 }
+
+
 

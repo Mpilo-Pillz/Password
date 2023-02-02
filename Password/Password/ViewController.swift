@@ -26,10 +26,17 @@ extension ViewController {
     func layout() {
         view.addSubview(passwordTextField)
                 
-                NSLayoutConstraint.activate([
-                    passwordTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                    passwordTextField.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-                ])
+//                NSLayoutConstraint.activate([
+//                    passwordTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//                    passwordTextField.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+//                ])
+        
+        NSLayoutConstraint.activate([
+            passwordTextField.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 1),
+            view.trailingAnchor.constraint(equalToSystemSpacingAfter: passwordTextField.trailingAnchor, multiplier: 1),
+            passwordTextField.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+        ])
+
     }
 }
 
