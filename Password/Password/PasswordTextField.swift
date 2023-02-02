@@ -3,6 +3,8 @@
 //  Password
 //
 //  Created by Mpilo Pillz on 2023/02/01.
+//  Color guide https://github.com/jrasmusson/ios-starter-kit/blob/master/basics/Color/README.md
+//  quartenary label
 //
 
 import UIKit
@@ -14,6 +16,7 @@ class PasswordTextField: UIView {
     let placeHolderText: String
     let eyeButton = UIButton(type: .custom)
     let dividerView = UIView()
+    let errorLabel = UILabel()
 
     
     
@@ -52,7 +55,7 @@ class PasswordTextField: UIView {
 extension PasswordTextField {
     func style() {
         translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = .systemCyan
+        backgroundColor = .yellow
         lockImageView.translatesAutoresizingMaskIntoConstraints = false
         
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -70,6 +73,12 @@ extension PasswordTextField {
         
         dividerView.translatesAutoresizingMaskIntoConstraints = false
         dividerView.backgroundColor = .separator
+        
+        errorLabel.translatesAutoresizingMaskIntoConstraints = false
+        errorLabel.textColor = .systemRed
+        errorLabel.font = .preferredFont(forTextStyle: .footnote)
+        errorLabel.text = "Enter your password"
+        errorLabel.isHidden = false // true
 
         
         
@@ -81,6 +90,7 @@ extension PasswordTextField {
         addSubview(textField)
         addSubview(eyeButton)
         addSubview(dividerView)
+        addSubview(errorLabel)
         
         // lock
         NSLayoutConstraint.activate([
@@ -108,6 +118,14 @@ extension PasswordTextField {
             dividerView.heightAnchor.constraint(equalToConstant: 1),
             dividerView.topAnchor.constraint(equalToSystemSpacingBelow: textField.bottomAnchor, multiplier: 1)
         ])
+        
+        // error
+        NSLayoutConstraint.activate([
+            errorLabel.topAnchor.constraint(equalTo: dividerView.bottomAnchor, constant: 4),
+            errorLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            errorLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+        ])
+
         
         // CHCR
         lockImageView.setContentHuggingPriority(UILayoutPriority.defaultHigh, for: .horizontal) // lock image view i need you to hug yourself and i dont want you to tretch
