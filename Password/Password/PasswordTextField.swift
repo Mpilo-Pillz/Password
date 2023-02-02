@@ -12,6 +12,9 @@ class PasswordTextField: UIView {
     let lockImageView = UIImageView(image: UIImage(systemName: "lock.fill"))
     let textField = UITextField()
     let placeHolderText: String
+    let eyeButton = UIButton(type: .custom)
+    
+    
     
 //    override init(frame: CGRect) {
 //        super.init(frame: frame)
@@ -56,11 +59,21 @@ extension PasswordTextField {
         textField.keyboardType = .asciiCapable // preventing what the user can enter, eg emojies
         textField.attributedPlaceholder = NSAttributedString(string:placeHolderText,
                                                              attributes: [NSAttributedString.Key.foregroundColor: UIColor.secondaryLabel]) // text color of placeholder
+        
+        eyeButton.translatesAutoresizingMaskIntoConstraints = false
+        eyeButton.setImage(UIImage(systemName: "eye.circle"), for: .normal)
+        eyeButton.setImage(UIImage(systemName: "eye.slash.circle"), for: .selected)
+        eyeButton.addTarget(self, action: #selector(togglePasswordView), for: .touchUpInside)
+
+        
+        
+        
     }
     
     func layout() {
         addSubview(lockImageView)
         addSubview(textField)
+        addSubview(eyeButton)
         
         // lock
         NSLayoutConstraint.activate([
@@ -73,5 +86,21 @@ extension PasswordTextField {
             textField.topAnchor.constraint(equalTo: topAnchor),
             textField.leadingAnchor.constraint(equalToSystemSpacingAfter: lockImageView.trailingAnchor, multiplier: 1),
         ])
+        
+        // eye
+        NSLayoutConstraint.activate([
+            eyeButton.centerYAnchor.constraint(equalTo: textField.centerYAnchor),
+            eyeButton.leadingAnchor.constraint(equalToSystemSpacingAfter: textField.trailingAnchor, multiplier: 1),
+            eyeButton.trailingAnchor.constraint(equalTo: trailingAnchor)
+        ])
     }
 }
+
+// MARK: - Actions
+extension PasswordTextField {
+    @objc func togglePasswordView(_ sender: Any) {
+        textField.isSecureTextEntry.toggle()
+        eyeButton.isSelected.toggle()
+    }
+}
+
