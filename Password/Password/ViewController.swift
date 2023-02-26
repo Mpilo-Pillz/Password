@@ -10,6 +10,7 @@ import UIKit
 class ViewController: UIViewController {
     let stackView = UIStackView()
     let passwordTextField = PasswordTextField(placeHolderText: "New password")
+    let criteriaView = PasswordCriteriaView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,10 +26,12 @@ extension ViewController {
         stackView.spacing = 20
         
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
+        criteriaView.translatesAutoresizingMaskIntoConstraints = false
     }
     
     func layout() {
-        stackView.addArrangedSubview(passwordTextField)
+//        stackView.addArrangedSubview(passwordTextField)
+        stackView.addArrangedSubview(criteriaView)
         view.addSubview(stackView)
 //        view.addSubview(passwordTextField)
 
