@@ -9,6 +9,7 @@ import UIKit
 
 class PasswordCriteriaView: UIView {
     let stackView = UIStackView()
+    let imageView = UIImageView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -33,16 +34,27 @@ extension PasswordCriteriaView {
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.spacing = 8
-        stackView.backgroundColor = .systemRed
+//        stackView.backgroundColor = .systemRed
+        
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = UIImage(systemName: "circle")!.withTintColor(.tertiaryLabel, renderingMode: .alwaysOriginal)
     }
     
     func layout() {
+        stackView.addArrangedSubview(imageView
+        )
        addSubview(stackView)
+        
+        // Stack
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: topAnchor),
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
             stackView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
+        
+        // Image
+        NSLayoutConstraint.activate([
+            imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor)])
     }
 }
