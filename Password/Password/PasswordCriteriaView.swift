@@ -12,8 +12,36 @@ class PasswordCriteriaView: UIView {
     let imageView = UIImageView()
     let label = UILabel()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    let checkmarkImage = UIImage(systemName: "checkmark.circle")!.withTintColor(.systemGreen, renderingMode: .alwaysOriginal)
+    let xmarkImage = UIImage(systemName: "xmark.circle")!.withTintColor(.systemRed, renderingMode: .alwaysOriginal)
+    let circleImage = UIImage(systemName: "circle")!.withTintColor(.tertiaryLabel, renderingMode: .alwaysOriginal)
+    
+    var isCriteriaMet: Bool = false {
+        didSet {
+            if isCriteriaMet {
+                imageView.image = checkmarkImage
+            } else {
+                imageView.image = xmarkImage
+            }
+        }
+    }
+    
+    func reset() {
+        isCriteriaMet = false
+        imageView.image = circleImage
+    }
+    
+//    override init(frame: CGRect) {
+//        super.init(frame: frame)
+//
+//        style()
+//        layout()
+//    }
+    
+    init(text: String) {
+        super.init(frame: .zero)
+        
+        label.text = text
         
         style()
         layout()
@@ -31,7 +59,7 @@ class PasswordCriteriaView: UIView {
 extension PasswordCriteriaView {
     func style() {
         translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = .orange
+//        backgroundColor = .orange
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.spacing = 8
@@ -43,7 +71,7 @@ extension PasswordCriteriaView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .preferredFont(forTextStyle: .subheadline)
         label.textColor = .secondaryLabel
-        label.text = "uppercase letter (A-Z)"
+//        label.text = "uppercase letter [A-Z]"
     }
     
     func layout() {
