@@ -42,12 +42,12 @@ class PasswordStatusView: UIView {
 extension PasswordStatusView {
     func style() {
         translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = .yellow
+        backgroundColor = .tertiarySystemFill
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.spacing = 8
-        stackView.backgroundColor = .purple
+//        stackView.backgroundColor = .purple
 //        Option 4 - set the distribution.
 //        Equal centering attempts to set the centers of all the elements to be equal while respectign theri intrinsic content size
         stackView.distribution = .equalCentering
