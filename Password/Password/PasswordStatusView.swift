@@ -8,7 +8,8 @@
 import UIKit
 
 class PasswordStatusView: UIView {
-
+    let stackView = UIStackView()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -28,11 +29,23 @@ class PasswordStatusView: UIView {
 
 extension PasswordStatusView {
     func style() {
-        translatesAutoresizingMaskIntoConstraints = true
+        translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = .yellow
+        
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.spacing = 8
+        stackView.backgroundColor = .purple
     }
     
     func layout() {
+        addSubview(stackView)
         
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalToSystemSpacingBelow: topAnchor, multiplier: 2),
+            stackView.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 2),
+            trailingAnchor.constraint(equalToSystemSpacingAfter: stackView.trailingAnchor, multiplier: 2),
+            bottomAnchor.constraint(equalToSystemSpacingBelow: stackView.bottomAnchor, multiplier: 2)
+        ])
     }
 }
