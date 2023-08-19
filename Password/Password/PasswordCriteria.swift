@@ -24,4 +24,12 @@ struct PasswordCriteria {
     static func uppercaseMet(_ text: String) -> Bool {
         text.range(of: "[A-Z]+", options: .regularExpression) != nil
     }
+    
+    static func lowercaseMet(_ text: String) -> Bool {
+        text.range(of: "[a-z]+", options: .regularExpression) != nil
+    }
+    
+    static func digitMet(_ text: String) -> Bool {
+        text.range(of: "[0-9]+", options: .regularExpression) != nil
+    }
 }
