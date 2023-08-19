@@ -9,6 +9,10 @@
 
 import UIKit
 
+protocol PasswordTextFieldDelegate: AnyObject {
+    func editingChanged(_ sender: PasswordTextField)
+}
+
 class PasswordTextField: UIView {
     
     let lockImageView = UIImageView(image: UIImage(systemName: "lock.fill"))
@@ -18,7 +22,7 @@ class PasswordTextField: UIView {
     let dividerView = UIView()
     let errorLabel = UILabel()
 
-    
+    weak var delegate: PasswordTextFieldDelegate?
     
     
 //    override init(frame: CGRect) {
@@ -63,12 +67,15 @@ extension PasswordTextField  {
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.isSecureTextEntry = false // true
         textField.placeholder = placeHolderText
-        //        textField.delegate = self
+                textField.delegate = self
         textField.keyboardType = .asciiCapable // preventing what the user can enter, eg emojies
         textField.attributedPlaceholder = NSAttributedString(string:placeHolderText,
                                                              attributes: [NSAttributedString.Key.foregroundColor: UIColor.secondaryLabel]) // text color of placeholder
         
         
+        
+//        extra interaction - to giv us the entire word
+        textField.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
         
         eyeButton.translatesAutoresizingMaskIntoConstraints = false
         eyeButton.setImage(UIImage(systemName: "eye.circle"), for: .normal)
@@ -84,7 +91,7 @@ extension PasswordTextField  {
 //        errorLabel.text = "Enter your password"
 //        errorLabel.text = "Enter your password and again and again and again and again and again"
         errorLabel.text = "Your password must meet the requirements below" // requirements below will go down to a new line so there are no orphan words
-        errorLabel.isHidden = false // true
+        errorLabel.isHidden = true // false
         
 //        We can specify a minimum amount we'd like the font to reduce by setting a minimumScaleFactor of 80%. Meaning the font will reduce its in size 80% but no more.
 //        errorLabel.adjustsFontSizeToFitWidth = true
@@ -160,6 +167,15 @@ extension PasswordTextField {
         textField.isSecureTextEntry.toggle()
         eyeButton.isSelected.toggle()
     }
+    
+    @objc func textFieldEditingChanged(_ sender: UITextField) {
+        delegate?.editingChanged(self)
+    }
+}
+
+// MARK: - UITextFieldDelegate
+extension PasswordTextField: UITextFieldDelegate {
+    
 }
 
 

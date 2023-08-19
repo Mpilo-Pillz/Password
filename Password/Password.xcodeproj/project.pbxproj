@@ -14,6 +14,7 @@
 		C4417826298A040A006F3CB4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4417824298A040A006F3CB4 /* LaunchScreen.storyboard */; };
 		C441782F298A0957006F3CB4 /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C441782E298A0957006F3CB4 /* PasswordTextField.swift */; };
 		C48840D129B06A67001032A4 /* PasswordStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48840D029B06A67001032A4 /* PasswordStatusView.swift */; };
+		C48FA5BD2A91132C00A87DBC /* PasswordCriteria.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48FA5BC2A91132C00A87DBC /* PasswordCriteria.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		C4417827298A040A006F3CB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C441782E298A0957006F3CB4 /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
 		C48840D029B06A67001032A4 /* PasswordStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordStatusView.swift; sourceTree = "<group>"; };
+		C48FA5BC2A91132C00A87DBC /* PasswordCriteria.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordCriteria.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +46,7 @@
 			children = (
 				C42AF5CB29ADA126009ABDEE /* PasswordCriteriaView.swift */,
 				C48840D029B06A67001032A4 /* PasswordStatusView.swift */,
+				C48FA5BC2A91132C00A87DBC /* PasswordCriteria.swift */,
 			);
 			name = PasswordStatusView;
 			sourceTree = "<group>";
@@ -157,6 +160,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C441781E298A0409006F3CB4 /* ViewController.swift in Sources */,
+				C48FA5BD2A91132C00A87DBC /* PasswordCriteria.swift in Sources */,
 				C441781A298A0409006F3CB4 /* AppDelegate.swift in Sources */,
 				C42AF5CC29ADA126009ABDEE /* PasswordCriteriaView.swift in Sources */,
 				C48840D129B06A67001032A4 /* PasswordStatusView.swift in Sources */,
