@@ -121,6 +121,7 @@ extension PasswordStatusView {
         let uppercaseMet = PasswordCriteria.uppercaseMet(text)
         let lowercaseMet = PasswordCriteria.lowercaseMet(text)
         let digitMet = PasswordCriteria.digitMet(text)
+        let specialCharacterMet = PasswordCriteria.specialCharacterMet(text)
         
         if shouldResetCriteria {
 //            Inline validation (✅ or ⚪️)
@@ -131,6 +132,8 @@ extension PasswordStatusView {
             lowercaseMet ? lowerCaseCriteriaView.isCriteriaMet = true : lowerCaseCriteriaView.reset()
             
             digitMet ? digitCriteriaView.isCriteriaMet = true : digitCriteriaView.reset()
+            
+            specialCharacterMet ? specialCharacterCriteriaView.isCriteriaMet = true : specialCharacterCriteriaView.reset()
         }
     }
 }
