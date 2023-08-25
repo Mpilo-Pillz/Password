@@ -11,6 +11,7 @@ import UIKit
 
 protocol PasswordTextFieldDelegate: AnyObject {
     func editingChanged(_ sender: PasswordTextField)
+    func editingDidEnd(_ sender: PasswordTextField)
 }
 
 class PasswordTextField: UIView {
@@ -176,6 +177,7 @@ extension PasswordTextField {
 // MARK: - UITextFieldDelegate
 extension PasswordTextField: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
+        delegate?.editingDidEnd(self)
         print("end editing \(String(describing: textField.text))")
     }
     
