@@ -10,8 +10,16 @@
 import UIKit
 
 protocol PasswordTextFieldDelegate: AnyObject {
+    /** Friendly reminder that
+     * If you want to use this password textfeild
+     * You need to comply y implementing the following:
+     */
     func editingChanged(_ sender: PasswordTextField)
+    /**
+     * this is the means we are going to send text back after somone finishes editing
+     */
     func editingDidEnd(_ sender: PasswordTextField)
+    
 }
 
 class PasswordTextField: UIView {
@@ -176,14 +184,24 @@ extension PasswordTextField {
 
 // MARK: - UITextFieldDelegate
 extension PasswordTextField: UITextFieldDelegate {
+    /**
+     * You need to comply so that I can run these for you
+     * without caring about you implementation
+     * You just confprm and I will do this for you
+     */
     func textFieldDidEndEditing(_ textField: UITextField) {
-        delegate?.editingDidEnd(self)
+        /**
+         * this is where we trigger the means to send back text after
+         * someone finished editing
+         **/
+        delegate?.editingDidEnd(self) // Why are we passing in our self??
         print("end editing \(String(describing: textField.text))")
+        // triggers whn focus is lost
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         print("shouldReturn")
-        textField.endEditing(true)
+        textField.endEditing(true) // this is where we dismiss the keyboard by resigning first responder
         return true
     }
 }

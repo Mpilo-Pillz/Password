@@ -89,6 +89,9 @@ extension ViewController {
 
 // MARK: PasswordTextFieldDelegate
 extension ViewController: PasswordTextFieldDelegate {
+    /**
+     * This is the View controller complying
+     */
     func editingDidEnd(_ sender: PasswordTextField) {
         print(sender.textField.text)
     }
