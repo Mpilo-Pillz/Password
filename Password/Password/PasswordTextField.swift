@@ -24,16 +24,23 @@ protocol PasswordTextFieldDelegate: AnyObject {
 
 class PasswordTextField: UIView {
     
+    typealias CustomValidation = (_ textValue: String?) -> (Bool, String)?
+    
     let lockImageView = UIImageView(image: UIImage(systemName: "lock.fill"))
     let textField = UITextField()
-    let placeHolderText: String
     let eyeButton = UIButton(type: .custom)
     let dividerView = UIView()
     let errorLabel = UILabel()
-
+    
+    let placeHolderText: String
+    var customValidation: CustomValidation?
     weak var delegate: PasswordTextFieldDelegate?
     
     
+    var text: String? {
+        get { return textField.text}
+        set { textField.text = newValue}
+    }
 //    override init(frame: CGRect) {
 //        super.init(frame: frame)
 //
@@ -206,5 +213,29 @@ extension PasswordTextField: UITextFieldDelegate {
     }
 }
 
+// MARK: - Validation
+extension PasswordTextField {
+    func validate() -> Bool {
+        // unwrapp the custom validation (if there is a custom validation object
+        // which there might not be
+        if let customValidation = customValidation,
+            let customValidationResult = customValidation(text),
+            customValidationResult.0 == false {
+            showError(customValidationResult.1)
+            return false
+        }
+        clearError()
+        return true
+    }
+    
+    private func showError(_ errorMessage: String) {
+        errorLabel.isHidden = false
+        errorLabel.text = errorMessage
+    }
 
+    private func clearError() {
+        errorLabel.isHidden = true
+        errorLabel.text = ""
+    }
+}
 
