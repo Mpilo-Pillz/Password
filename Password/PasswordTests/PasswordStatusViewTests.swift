@@ -76,3 +76,29 @@ class PasswordStatusViewTests_ShowCheckmarkOrRedX_When_Validation_Is_Loss_Of_Foc
         XCTAssertTrue(statusView.lengthCriteriaView.isXmarkImage)
     }
 }
+
+class PasswordStatusViewTests_Validate_Three_of_Four: XCTestCase {
+
+    var statusView: PasswordStatusView!
+    let twoOfFour = "12345678A"
+    let threeOfFour = "12345678Aa"
+    let fourOfFour = "12345678Aa!"
+
+    // Verify is valid if three of four criteria met
+    override func setUp() {
+        super.setUp()
+        statusView = PasswordStatusView()
+    }
+
+    func testTwoOfFour() throws {
+        XCTAssertFalse(statusView.validate(twoOfFour))
+    }
+    
+    func testThreeOfFour() throws {
+        XCTAssertTrue(statusView.validate(threeOfFour))
+    }
+
+    func testFourOfFour() throws {
+        XCTAssertTrue(statusView.validate(fourOfFour))
+    }
+}

@@ -18,6 +18,7 @@
 		C4B3B5002AA2FAB300CAFE6B /* UIResponder+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B3B4FF2AA2FAB300CAFE6B /* UIResponder+Utils.swift */; };
 		C4B3B50F2AA3116B00CAFE6B /* PasswordCriteriaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B3B50E2AA3116B00CAFE6B /* PasswordCriteriaTests.swift */; };
 		C4B3B5112AA3207B00CAFE6B /* PasswordStatusViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B3B5102AA3207B00CAFE6B /* PasswordStatusViewTests.swift */; };
+		C4B3B5132AA32AF400CAFE6B /* ViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B3B5122AA32AF400CAFE6B /* ViewControllerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		C4B3B5052AA3103200CAFE6B /* PasswordTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PasswordTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4B3B50E2AA3116B00CAFE6B /* PasswordCriteriaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordCriteriaTests.swift; sourceTree = "<group>"; };
 		C4B3B5102AA3207B00CAFE6B /* PasswordStatusViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordStatusViewTests.swift; sourceTree = "<group>"; };
+		C4B3B5122AA32AF400CAFE6B /* ViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 			children = (
 				C4B3B50E2AA3116B00CAFE6B /* PasswordCriteriaTests.swift */,
 				C4B3B5102AA3207B00CAFE6B /* PasswordStatusViewTests.swift */,
+				C4B3B5122AA32AF400CAFE6B /* ViewControllerTests.swift */,
 			);
 			path = PasswordTests;
 			sourceTree = "<group>";
@@ -248,6 +251,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4B3B5132AA32AF400CAFE6B /* ViewControllerTests.swift in Sources */,
 				C4B3B50F2AA3116B00CAFE6B /* PasswordCriteriaTests.swift in Sources */,
 				C4B3B5112AA3207B00CAFE6B /* PasswordStatusViewTests.swift in Sources */,
 			);
