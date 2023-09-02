@@ -30,7 +30,10 @@ extension ViewController {
         setupNewPassword()
         setupConfirmPassword()
         setupDismissKeyboardGesture()
+        setupKeyboardHiding()
     }
+    
+   
     
     private func setupNewPassword() {
         let newPasswordValidation: CustomValidation = { text in
@@ -84,6 +87,12 @@ extension ViewController {
     @objc func viewTapped(_ recognizer: UITapGestureRecognizer) {
         view.endEditing(true)
     }
+    
+    private func setupKeyboardHiding() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
     func style() {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
@@ -158,7 +167,16 @@ extension ViewController: PasswordTextFieldDelegate {
         }
 //        print(sender.textField.text)
     }
-    
-    
+}
+
+// MARK: Keyboard
+extension ViewController {
+    @objc func keyboardWillShow(sender: NSNotification) {
+        view.frame.origin.y = view.frame.origin.y - 200
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        view.frame.origin.y = 0
+    }
 }
 
