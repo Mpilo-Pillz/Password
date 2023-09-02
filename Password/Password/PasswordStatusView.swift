@@ -173,3 +173,21 @@ extension PasswordStatusView {
     }
 }
 
+/*
+ * The below is only for testing and tells the test if the image has changes to circle, checkmark or cross
+ */
+// MARK: Tests
+extension PasswordCriteriaView {
+    var isCheckMarkImage: Bool {
+        return imageView.image == checkmarkImage
+    }
+
+    var isXmarkImage: Bool {
+        return imageView.image == xmarkImage
+    }
+
+    var isResetImage: Bool {
+        return imageView.image == circleImage
+    }
+}
+
